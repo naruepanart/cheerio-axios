@@ -10,11 +10,11 @@ const main = async (data: string[]) => {
 
     // copy from selector on page
     const heading = $("#chapter-heading");
+    console.log($(heading[i]).text());
+    
     const content = $(
       "body > div.wrap > div > div > div > div > div > div > div > div > div.c-blog-post > div.entry-content > div > div > div.reading-content > div.text-left"
     );
-
-    console.log($(heading[i]).text());
     console.log($(content[i]).text());
   }
 };
