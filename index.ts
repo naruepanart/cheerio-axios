@@ -1,34 +1,26 @@
 import { PrismaClient } from "@prisma/client";
+import { uuidv7 } from "uuidv7";
 
 const prisma = new PrismaClient();
 
+// seed data
 async function main() {
-  /*   await prisma.post.create({
+  await prisma.users.create({
     data: {
-      title: "Alice",
-      content: "alice1@prisma.io",
-      published: true,
-      authorId: 1,
-    },
-  }); */
-
-  const post = await prisma.post.findMany({
-    include: {
-      author: true,
+      name: uuidv7(),
+      email: uuidv7(),
     },
   });
-  console.log(post);
 
-  /* const user = await prisma.user.create({
-    data: {
-      name: "Alice",
-      email: "alice1@prisma.io",
-    },
-  });
-  console.log(user);
-
-  const users = await prisma.user.findMany();
-  console.log(users); */
+  for (let i = 0; i < 2; i++) {
+    await prisma.posts.create({
+      data: {
+        title: uuidv7(),
+        content: uuidv7(),
+        usersId: 1,
+      },
+    });
+  }
 }
 
 main()

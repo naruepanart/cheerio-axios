@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  const updated = await prisma.post.update({
+  const updated = await prisma.posts.update({
     where: { id: 2 },
     data: {
       title: "This is updated title",

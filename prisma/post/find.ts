@@ -3,14 +3,14 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  const findAll = await prisma.post.findMany({
+  const findAll = await prisma.posts.findMany({
     include: {
       author: true,
     },
   });
   console.log(findAll);
 
-  const findOne = await prisma.post.findUnique({
+  const findOne = await prisma.posts.findUnique({
     where: {
       id: 1,
     },
