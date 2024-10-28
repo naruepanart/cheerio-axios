@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
-import data from "./get-content.json";
+import data from "./one-page-data.json";
 
 const main = async (data: string[]) => {
   for (let i = 0; i < data.length; i++) {
