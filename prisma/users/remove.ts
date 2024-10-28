@@ -3,12 +3,12 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  const del = await prisma.user.delete({
+  const removed = await prisma.user.delete({
     where: {
       id: 2,
     },
   });
-  console.log(del);
+  console.log(removed);
 }
 
 main()
