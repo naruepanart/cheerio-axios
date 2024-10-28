@@ -5,19 +5,19 @@ const prisma = new PrismaClient();
 
 // seed data
 async function main() {
-  await prisma.users.create({
+  const created = await prisma.users.create({
     data: {
       name: uuidv7(),
       email: uuidv7(),
     },
   });
 
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 5; i++) {
     await prisma.posts.create({
       data: {
         title: uuidv7(),
         content: uuidv7(),
-        usersId: 1,
+        usersId: created.id,
       },
     });
   }
