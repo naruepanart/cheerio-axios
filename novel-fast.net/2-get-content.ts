@@ -9,11 +9,11 @@ const main = async (data: string[]) => {
     const $ = cheerio.load(response.data);
 
     // copy from selector on page
-    const heading = $("#post-178773 > div.bixbox.episodedl > div > div.epheader > h1");
+    const heading = $(".entry-title");
     console.log(heading.text());
 
-    const content = $("#post-178773 > div.bixbox.episodedl > div > div.epcontent.entry-content");
-    console.log(content.text());
+    // const content = $(".epcontent.entry-content");
+    // console.log(content.text());
   }
 };
 

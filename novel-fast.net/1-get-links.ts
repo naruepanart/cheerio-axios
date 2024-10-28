@@ -8,7 +8,7 @@ const main = async (data: any) => {
     const response = await axios.get(data[i]);
     const $ = cheerio.load(response.data);
 
-    const links = $("#post-177920 > div.sertobody > div.bixbox.bxcl.epcheck > div.eplister.eplisterfull > ul > li > a");
+    const links = $(".eplister.eplisterfull > ul > li > a");
 
     let l = [];
     for (let i = 0; i < links.length; i++) {
