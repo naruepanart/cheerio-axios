@@ -1,14 +1,42 @@
-import axios from "axios";
-import * as cheerio from "cheerio";
+import { PrismaClient } from "@prisma/client";
 
-const main = async () => {
-  const response = await axios.get("https://news.ycombinator.com/newest");
+const prisma = new PrismaClient();
 
-  const $ = cheerio.load(response.data);
+async function main() {
+  /*   await prisma.post.create({
+    data: {
+      title: "Alice",
+      content: "alice1@prisma.io",
+      published: true,
+      authorId: 1,
+    },
+  }); */
 
-  const links = $(".titleline > a");
+  const post = await prisma.post.findMany({
+    include: {
+      author: true,
+    },
+  });
+  console.log(post);
 
-  console.log(links.text());
-};
+  /* const user = await prisma.user.create({
+    data: {
+      name: "Alice",
+      email: "alice1@prisma.io",
+    },
+  });
+  console.log(user);
 
-main();
+  const users = await prisma.user.findMany();
+  console.log(users); */
+}
+
+main()
+  .then(async () => {
+    await prisma.$disconnect();
+  })
+  .catch(async (e) => {
+    console.error(e);
+    await prisma.$disconnect();
+    process.exit(1);
+  });
