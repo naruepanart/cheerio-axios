@@ -1,7 +1,7 @@
 import axios from "axios";
 import fs from "fs";
 import * as cheerio from "cheerio";
-import data from "./1-get-links.json";
+import data from "./get-links.json";
 
 const main = async (data: any) => {
   for (let i = 0; i < data.length; i++) {
